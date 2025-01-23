@@ -77,3 +77,44 @@ footer {
     height:30px;
     width:100%;
 }
+.orange-border {
+    border: 4px solid orange; /* Толщина и цвет рамки */
+    border-radius: 10px;     /* Скругленные углы */
+    padding: 20px;           /* Внутренние отступы */
+    background-color: #fff5e6; /* Светлый фон внутри рамки */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для красоты */
+    text-align: center;      /* Выравнивание текста */
+    font-family: Arial, sans-serif; /* Шрифт */
+}
+
+.supplier-card {
+    border: 4px solid orange; /* Оранжевая рамка */
+    border-radius: 15px;     /* Скругленные углы */
+    padding: 20px;           /* Внутренние отступы */
+    background-color: #fff5e6; /* Светлый фон */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Тень */
+    text-align: center;      /* Центрирование текста */
+    max-width: 400px;        /* Ширина блока */
+    margin: 20px auto;       /* Центрирование блока на странице */
+    font-family: Arial, sans-serif; /* Шрифт */
+}
+
+.supplier-photo {
+    width: 100px;            /* Ширина фото */
+    height: 100px;           /* Высота фото */
+    border-radius: 50%;      /* Круглое фото */
+    margin-bottom: 15px;     /* Отступ под фото */
+    border: 3px solid orange; /* Рамка вокруг фото */
+}
+
+.supplier-name {
+    font-size: 20px;         /* Размер шрифта для имени */
+    color: #ff6600;          /* Ярко-оранжевый цвет */
+    margin-bottom: 10px;     /* Отступ под заголовком */
+}
+
+.supplier-description {
+    font-size: 16px;         /* Размер шрифта для описания */
+    color: #333;             /* Темный цвет текста */
+    line-height: 1.5;        /* Интервал между строками */
+}
