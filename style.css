@@ -1,57 +1,71 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fdf6e3;
-    color: #333;
+    background: linear-gradient(135deg, #FFFAE5, #FFE4B3);
+    animation: backgroundShift 10s infinite alternate;
+    overflow: hidden;
 }
+
 header {
     background-color: #ffa500;
     color: white;
     padding: 20px 0;
     text-align: center;
 }
+
 header h1 {
     margin: 0;
     font-size: 2.5em;
 }
+
 .container {
     max-width: 1200px;
     margin: 20px auto;
     padding: 0 20px;
 }
+
 .mandarins {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
+
 .card {
     background: white;
     border: 1px solid #ddd;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    transition: transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .card:hover {
-    transform: scale(1.05);
+    transform: translateY(-10px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
+
 .card img {
     width: 100%;
     height: auto;
+    transition: transform 0.3s ease;
 }
+
 .card-content {
     padding: 15px;
     text-align: center;
 }
+
 .card-content h3 {
     margin: 10px 0;
     font-size: 1.5em;
 }
+
 .card-content p {
     margin: 10px 0;
     color: #666;
 }
+
 .card-content button {
     background-color: #ffa500;
     color: white;
@@ -62,85 +76,167 @@ header h1 {
     font-size: 1em;
     transition: background-color 0.2s;
 }
+
 .card-content button:hover {
     background-color: #e69500;
 }
-footer {
-    background-color: #333;
+
+.card-content button:active {
+    transform: scale(0.98); /* Эффект сжатия при нажатии */
+}
+
+.cart-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    background-color: #ffa500;
     color: white;
-    text-align: center;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.cart-menu {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 350px;
+    height: 100%;
+    background-color: white;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 999;
+    overflow-y: auto;
+}
+
+.cart-items {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-items .cart-item {
+    display: flex;
+    justify-content: space-between;
     padding: 10px 0;
-    margin-top: 20px;
-    position:fixed;
-    left:0px;
-    bottom:0px;
-    height:30px;
-    width:100%;
-}
-.orange-border {
-    border: 4px solid orange; /* Толщина и цвет рамки */
-    border-radius: 10px;     /* Скругленные углы */
-    padding: 20px;           /* Внутренние отступы */
-    background-color: #fff5e6; /* Светлый фон внутри рамки */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для красоты */
-    text-align: center;      /* Выравнивание текста */
-    font-family: Arial, sans-serif; /* Шрифт */
+    border-bottom: 1px solid #ddd;
+    align-items: center;
 }
 
-.supplier-card {
-    display: flex;            /* Используем flexbox для расположения элементов в строку */
-    align-items: center;      /* Выравнивание по вертикали */
-    border: 2px solid #ffa726; /* Оранжевая рамка */
-    border-radius: 12px;      /* Скругленные углы */
-    padding: 20px;            /* Внутренние отступы */
-    background-color: #fffaf2; /* Нежный фон */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Тень для объема */
-    max-width: 600px;         /* Максимальная ширина блока */
-    margin: 20px auto;        /* Центрирование на странице */
-    font-family: Arial, sans-serif;
-    gap: 20px;                /* Расстояние между фото и текстом */
+.cart-items .cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 5px;
 }
 
-.supplier-photo-container {
-    flex-shrink: 0;           /* Запрет на изменение размера контейнера с фото */
-    border-radius: 50%;       /* Круглый фон для фото */
-    overflow: hidden;         /* Обрезаем содержимое фото по кругу */
-    width: 100px;             /* Размер контейнера */
-    height: 100px;            /* Размер контейнера */
-    border: 3px solid #ffa726; /* Оранжевая рамка вокруг фото */
+.cart-items .cart-item p {
+    margin: 0;
+    font-size: 1.1em;
 }
 
-.supplier-photo {
-    width: 100%;              /* Фото заполняет весь контейнер */
-    height: 100%;             /* Фото заполняет весь контейнер */
-    object-fit: cover;        /* Обрезка фото по размеру контейнера */
+.cart-items .cart-item button {
+    background-color: #e69500;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
 }
 
-.supplier-info {
-    flex: 1;                  /* Информация занимает оставшееся место */
+.cart-items .cart-item button:hover {
+    background-color: #d18400;
 }
 
-.supplier-name {
-    font-size: 20px;          /* Размер шрифта для имени */
-    color: #ff6d00;           /* Яркий оранжевый цвет */
-    margin-bottom: 10px;      /* Отступ под названием */
+.cart-menu footer {
+    padding: 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+    font-size: 1.2em;
 }
 
-.supplier-description {
-    font-size: 16px;          /* Размер шрифта описания */
-    color: #333;              /* Темный цвет текста */
-    line-height: 1.5;         /* Межстрочный интервал */
-    margin-bottom: 10px;      /* Отступ под текстом */
+.checkout {
+    background-color: #ffa500;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.5em;
+    width: 100%;
 }
 
-.supplier-link {
-    font-size: 14px;          /* Размер шрифта для ссылки */
-    color: #ff6d00;           /* Оранжевый цвет текста ссылки */
-    text-decoration: none;    /* Убираем подчеркивание */
-    font-weight: bold;        /* Полужирный текст */
-    transition: color 0.3s;   /* Плавный переход цвета при наведении */
+.checkout:hover {
+    background-color: #e69500;
 }
 
-.supplier-link:hover {
-    color: #e65100;           /* Более темный оранжевый при наведении */
+.close-menu {
+    font-size: 20px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+@keyframes backgroundShift {
+    0% {
+        background: linear-gradient(135deg, #FFFAE5, #FFE4B3);
+    }
+    100% {
+        background: linear-gradient(135deg, #FFE4B3, #FFFAE5);
+    }
+}
+
+.cart-menu.open {
+    right: 0;
+}
+
+.cart-icon.hidden {
+    display: none;
+}
+
+/* Анимация мандаринов */
+#mandarin-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.mandarin {
+    position: absolute;
+    width: 80px; /* Увеличим размер */
+    height: 80px; /* Увеличим размер */
+    background-size: cover; /* Заставим изображение растягиваться по размеру элемента */
+    background-image: url('https://png.pngtree.com/png-vector/20231223/ourmid/pngtree-peeled-tangerine-segment-organic-png-image_10950112.png'); /* Поменяй на ссылку изображения мандарина */
+    animation: flyMandarins 10s linear infinite;
+}
+
+@keyframes flyMandarins {
+    0% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+    25% {
+        transform: translateX(10vw) translateY(20vh);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateX(20vw) translateY(40vh);
+        opacity: 0.8;
+    }
+    75% {
+        transform: translateX(10vw) translateY(60vh);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateX(0) translateY(80vh);
+        opacity: 1;
+    }
 }
